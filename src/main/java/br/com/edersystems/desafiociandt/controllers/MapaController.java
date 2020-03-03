@@ -18,7 +18,11 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Collection;
 
 @RestController
 public class MapaController
@@ -30,5 +34,11 @@ public class MapaController
     public ResponseEntity<Mapa> saveMapa(@RequestBody MapaRequest request)
     {
         return service.saveMapa(request);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/logistica/mapa/all", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Collection<Mapa>> getMapas()
+    {
+        return service.getMapas();
     }
 }

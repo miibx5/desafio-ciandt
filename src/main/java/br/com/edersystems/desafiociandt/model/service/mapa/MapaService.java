@@ -18,6 +18,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
+
 @Service
 public class MapaService implements java.io.Serializable
 {
@@ -32,9 +34,19 @@ public class MapaService implements java.io.Serializable
         return new ResponseEntity<>(mapaToReturn, HttpStatus.OK);
     }
 
+    public ResponseEntity<Collection<Mapa>> getMapas()
+    {
+        return new ResponseEntity<>(this.repository.findAll(), HttpStatus.OK);
+    }
 
     private Mapa buildMapa(MapaRequest request)
     {
         return new Mapa(request.getOrigem(), request.getDestino(), request.getDistancia());
     }
+
+
 }
+
+
+
+
