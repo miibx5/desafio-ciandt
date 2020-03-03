@@ -11,6 +11,7 @@ Codification.................: UTF-8
 package br.com.edersystems.desafiociandt.model.response;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class ResponseTO implements java.io.Serializable
 {
@@ -43,7 +44,7 @@ public class ResponseTO implements java.io.Serializable
 
     public BigDecimal getCusto()
     {
-        return custo;
+        return custo.setScale(2, RoundingMode.HALF_EVEN);
     }
 
     public void setCusto(final BigDecimal custo)

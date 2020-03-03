@@ -19,6 +19,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.List;
 
 @Service
 public class MapaService implements java.io.Serializable
@@ -36,7 +37,12 @@ public class MapaService implements java.io.Serializable
 
     public ResponseEntity<Collection<Mapa>> getMapas()
     {
-        return new ResponseEntity<>(this.repository.findAll(), HttpStatus.OK);
+        return new ResponseEntity<>(this.getAllMapas(), HttpStatus.OK);
+    }
+
+    public List<Mapa> getAllMapas()
+    {
+        return this.repository.findAll();
     }
 
     private Mapa buildMapa(MapaRequest request)
